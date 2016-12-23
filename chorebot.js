@@ -14,7 +14,7 @@ var bot = new SlackBot({
 
 bot.on('start', function() {
     // define channel, where bot exist. You can adjust it there https://my.slack.com/services
-    bot.postMessageToChannel('general', 'chorebot is running.');
+    bot.postMessageToChannel('general', 'Yo! I am chorebot. You can ask me about your upcoming chores, who has chores today or whether a roomate has confirmed their chores today. Type "chorebot help" for more info.');
 });
 
 bot.on('message', function(message){
