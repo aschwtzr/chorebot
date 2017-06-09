@@ -1,0 +1,27 @@
+{
+  "name": "mckibbinbot",
+  "version": "1.0.0",
+  "description": "Run your steampunk technocratic loft from Slack",
+  "main": "main.js",
+  "scripts": {
+    "test": "bananagrams"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aschwtzr/mckibbinbot.git"
+  },
+  "author": "aschwtzr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aschwtzr/mckibbinbot/issues"
+  },
+  "homepage": "https://github.com/aschwtzr/mckibbinbot#readme",
+  "dependencies": {
+    "async": "^2.1.4",
+    "botkit": "^0.4.5",
+    "forever": "^0.15.3",
+    "google-auth-library": "^0.9.10",
+    "googleapis": "^15.0.0",
+    "node-cron": "^1.1.2"
+  }
+}

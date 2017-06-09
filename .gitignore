@@ -3,7 +3,9 @@ logs
 *.log
 npm-debug.log*
 
+#client secret and extra local junk
 client_secret.json
+botkit-example/**
 
 # Runtime data
 pids

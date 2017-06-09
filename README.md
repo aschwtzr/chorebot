@@ -1,9 +1,9 @@
 # mckibbinbot
-Test server for different Slackbots used in our McKibbin Loft
+One Slackbot to rule all the McKibbin Lofts
 
 Using forever: https://github.com/foreverjs/forever
 Using node-cron: https://github.com/kelektiv/node-cron
-Built on top of norrisbot: https://github.com/lmammino/norrisbot
-Using SlackBots.js: https://github.com/mishk0/slack-bot-api
-
-https://botwiki.org/tutorials/slackbots/
+Using botkit: https://github.com/howdyai/botkit
+Using Google Sheets: https://developers.google.com/sheets/api/quickstart/nodejs
+Using google-spreadsheet: https://www.npmjs.com/package/google-spreadsheet
+Using async: https://www.npmjs.com/package/async
