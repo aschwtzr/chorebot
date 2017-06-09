@@ -44,14 +44,15 @@ if (!process.env.token) {
 var Botkit = require('./lib/Botkit.js');
 var os = require('os');
 var fs = require('fs');
+var CronJob = require('cron').CronJob;
 var todayIndex
+var choresArray = [];
 
 //Google Sheets vars
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 var sheets = google.sheets('v4');
-var choresArray = [];
 
 // at ~/.credentials/sheets.googleapis.com-nodejs-quickstart.json
 var SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
@@ -71,6 +72,16 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
 
   authorize(JSON.parse(content), loadChores);
 });
+
+var job = new CronJob({
+  cronTime: '00 00 08 * * 0-6',
+  onTick: function() {
+    dailyUpdate()
+  },
+  start: true,
+  timeZone: 'America/New_York'
+});
+job.start();
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -245,6 +256,29 @@ function formatUptime(uptime) {
 
 
      });
+
+function dailyUpdate() {
+  fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+    if (err) {
+      console.log('Error loading client secret file: ' + err);
+      return;
+    }
+    // Authorize a client with the loaded credentials, then call the
+    // Google Sheets API.
+
+    authorize(JSON.parse(content), loadChores);
+    publishDailyChores()
+  });
+}
+
+function publishDailyChores() {
+  bot.say(
+  {
+    text: "Chores today: " + choresArray[todayIndex][1] + " " + choresArray[todayIndex][2] + " " + choresArray[todayIndex][3]+ " " + choresArray[todayIndex][4],
+    channel: 'chores'
+  }
+);
+}
 
 function loadChores(auth) {
   var date = new Date();
